@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
   app.UseDeveloperExceptionPage();
 }
 
+app.UseCors("default");
 app.UseRouting();
 app.UseAuthorization();
 app.UseAuthorization();
