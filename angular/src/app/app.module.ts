@@ -31,9 +31,9 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     MatListModule,
     MsalModule.forRoot(new PublicClientApplication({
       auth: {
-        clientId: 'ccc3363e-a986-4c23-b942-eafc7eb53565', // Application (client) ID from the app registration
-        authority: '94d47d96-52c0-4b73-b3ae-028fafc55d47',
-        redirectUri: '/signin-oidc'
+        clientId: '8b8d0a49-6d53-41bf-865f-ad9dcb69da8e', // Application (client) ID from the app registration
+        authority: 'https://login.microsoftonline.com/94d47d96-52c0-4b73-b3ae-028fafc55d47',
+        redirectUri: 'http://localhost:4200'
       },
       cache: {
         cacheLocation: 'localStorage',
