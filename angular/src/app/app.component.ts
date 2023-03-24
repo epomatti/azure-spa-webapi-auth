@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
-import { InteractionStatus } from '@azure/msal-browser';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
+import { InteractionStatus, PopupRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
 
-  constructor(private broadcastService: MsalBroadcastService, private authService: MsalService) { }
+  constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration, private broadcastService: MsalBroadcastService, private authService: MsalService) { }
 
   ngOnInit() {
     this.isIframe = window !== window.parent && !window.opener;
@@ -31,7 +31,31 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    this.authService.loginRedirect();
+    if (this.msalGuardConfig.authRequest){
+      this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
+        .subscribe({
+          next: (result) => {
+            console.log(result);
+            this.setLoginDisplay();
+          },
+          error: (error) => console.log(error)
+        });
+    } else {
+      this.authService.loginPopup()
+        .subscribe({
+          next: (result) => {
+            console.log(result);
+            this.setLoginDisplay();
+          },
+          error: (error) => console.log(error)
+        });
+    }
+  }
+
+  logout() { // Add log out function here
+    this.authService.logoutPopup({
+      mainWindowRedirectUri: "/"
+    });
   }
 
   setLoginDisplay() {
