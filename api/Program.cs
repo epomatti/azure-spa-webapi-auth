@@ -1,5 +1,4 @@
 using Microsoft.Identity.Web;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using dotenv.net;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Logging;
