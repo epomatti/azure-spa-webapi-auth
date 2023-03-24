@@ -15,6 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
 
+builder.Services.AddCors(o => o.AddPolicy("default", builder =>
+    {
+      builder.AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader();
+    }));
+
 builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
