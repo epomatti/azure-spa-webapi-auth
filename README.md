@@ -25,3 +25,6 @@ az ad group member add \
 
 Add the variables to launch.json
 
+
+
+https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/3-Authorization-II/1-call-api
