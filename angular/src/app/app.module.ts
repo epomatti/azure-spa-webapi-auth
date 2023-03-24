@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // Import 
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 
-import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@azure/msal-angular'; // Import MsalInterceptor
+import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@azure/msal-angular';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -33,7 +33,7 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     HttpClientModule,
     MsalModule.forRoot(new PublicClientApplication({
       auth: {
-        clientId: '8b8d0a49-6d53-41bf-865f-ad9dcb69da8e', // Application (client) ID from the app registration
+        clientId: "8b8d0a49-6d53-41bf-865f-ad9dcb69da8e",
         authority: 'https://login.microsoftonline.com/94d47d96-52c0-4b73-b3ae-028fafc55d47',
         redirectUri: 'http://localhost:4200'
       },
@@ -47,7 +47,7 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
         scopes: ['user.read']
       }
     }, {
-      interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
+      interactionType: InteractionType.Redirect,
       protectedResourceMap: new Map([
         ['https://graph.microsoft.com/v1.0/me', ['user.read']]
       ])

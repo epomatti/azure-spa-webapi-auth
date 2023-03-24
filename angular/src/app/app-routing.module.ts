@@ -20,8 +20,6 @@ const isIframe = window !== window.parent && !window.opener;
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    // initialNavigation: !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup() ? 'enabledNonBlocking' : 'disabled' // Set to enabledBlocking to use Angular Universal
-    // initialNavigation: !isIframe ? 'enabled' : 'disabled'
     initialNavigation: !isIframe ? 'enabledNonBlocking' : 'disabled'
   })],
   exports: [RouterModule]
