@@ -45,13 +45,14 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
       }
     }), {
       interactionType: InteractionType.Redirect,
-      authRequest: {
-        scopes: ['user.read']
-      }
+      // authRequest: {
+      //   scopes: ['user.read', 'api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']
+      // }
     }, {
       interactionType: InteractionType.Redirect,
       protectedResourceMap: new Map([
-        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+        // ['https://graph.microsoft.com/v1.0/me', ['user.read']],
+        ['http://localhost:5053/api/protected', ['api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']]
       ])
     })
   ],
