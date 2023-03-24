@@ -8,10 +8,6 @@ DotEnv.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-//             .AddMicrosoftIdentityWebApi(options => builder.Configuration.Bind("AzureAd", options));
-
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
 
