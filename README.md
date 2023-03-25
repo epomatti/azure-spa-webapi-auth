@@ -25,6 +25,6 @@ az ad group member add \
 
 Add the variables to launch.json
 
-
+https://learn.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-overview
 https://learn.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-angular-auth-code
 https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/3-Authorization-II/1-call-api
