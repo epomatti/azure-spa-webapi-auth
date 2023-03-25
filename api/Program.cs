@@ -22,8 +22,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Only for development
-IdentityModelEventSource.ShowPII = true;
 
 var app = builder.Build();
 
@@ -32,6 +30,7 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
   app.UseDeveloperExceptionPage();
+  IdentityModelEventSource.ShowPII = true;
 }
 
 app.UseCors("default");
