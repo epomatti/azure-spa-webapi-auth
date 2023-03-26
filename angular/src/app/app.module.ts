@@ -16,6 +16,8 @@ import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { ApiComponent } from './api/api.component';
 
+import { environment } from '../environments/environment';
+
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 @NgModule({
@@ -35,10 +37,9 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     HttpClientModule,
     MsalModule.forRoot(new PublicClientApplication({
       auth: {
-        // clientId: "8b8d0a49-6d53-41bf-865f-ad9dcb69da8e",
-        clientId: "f8ab0130-ed46-43ef-8915-a9cf18d57f44",
-        authority: 'https://login.microsoftonline.com/94d47d96-52c0-4b73-b3ae-028fafc55d47',
-        redirectUri: 'http://localhost:4200'
+        clientId: environment.applicationId,
+        authority: `https://login.microsoftonline.com/${environment.tenantId}`,
+        redirectUri: environment.redirectUri
       },
       cache: {
         cacheLocation: 'localStorage',
@@ -48,14 +49,14 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
       interactionType: InteractionType.Redirect,
       authRequest: {
         // scopes: ['user.read', 'api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']
-        scopes: ['user.read', 'api://f8ab0130-ed46-43ef-8915-a9cf18d57f44/user_impersonation']
+        scopes: ['user.read', `api://${environment.applicationId}/user_impersonation`]
       }
     }, {
       interactionType: InteractionType.Redirect,
       protectedResourceMap: new Map([
         ['https://graph.microsoft.com/v1.0/me', ['user.read']],
         // ['http://localhost:5053/api/*', ['api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']]
-        ['https://myappoauth.azurewebsites.net/api/*', ['api://f8ab0130-ed46-43ef-8915-a9cf18d57f44/user_impersonation']]
+        [`${environment.appServiceEndpoint}/api/*`, [`api://${environment.applicationId}/user_impersonation`]]
       ])
     })
   ],

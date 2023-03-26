@@ -61,6 +61,18 @@ curl https://appdotnetwebapi789.azurewebsites.net/api/dogs
 ```
 
 
+Now enter `cd angular` into the SPA. Create the envs: `touch src/environments/environment.development.ts`.
+
+```
+export const environment = {
+  production: true,
+  appServiceEndpoint: "https://appdotnetwebapi789.azurewebsites.net",
+  applicationId: "b1b006d1-9a68-4abf-b941-e3959c9c48d5",
+  tenantId: "94d47d96-52c0-4b73-b3ae-028fafc55d47",
+  redirectUri: "http://localhost:4200"
+};
+```
+
 
 az rest --uri /subscriptions/2ea97ae3-d129-41fb-a4ca-eb56ad392d35/resourceGroups/rgapp/providers/Microsoft.Web/sites/myappoauth/config/authsettingsV2?api-version=2022-03-01 --method get > auth.json
 

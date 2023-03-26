@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
-const API_ENDPOINT = "https://myappoauth.azurewebsites.net/api/protected"
+const API_ENDPOINT = `${environment.appServiceEndpoint}/api/protected`
 
 type ProtectedAPI = {
   protectedValue?: string
