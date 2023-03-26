@@ -2,7 +2,7 @@
 
 Demonstration of an Angular app authentication with OAuth Auth Code Flow on Azure AD, with a backend hosted on App Services.
 
-<img src=".docs/diagram.png" width=500 />
+<img src=".docs/diagram.png" width=600 />
 
 ## Infrastructure
 
