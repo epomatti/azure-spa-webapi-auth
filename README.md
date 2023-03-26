@@ -1,6 +1,6 @@
 # Angular SPA + Web API authentication on Azure
 
-<img srd=".docs/diagram.png" />
+<img src=".docs/diagram.png" />
 
 ## Infrastructure
 
