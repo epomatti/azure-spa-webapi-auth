@@ -80,7 +80,7 @@ touch src/environments/environment.ts
 
 Add the environments:
 
-```
+```typescript
 export const environment = {
   production: true,
   appServiceEndpoint: "https://<app_name>.azurewebsites.net",
