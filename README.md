@@ -1,5 +1,7 @@
 # Angular SPA + Web API authentication on Azure
 
+Demonstration of an Angular app authentication with OAuth Auth Code Flow on Azure AD, with a backend hosted on App Services.
+
 <img src=".docs/diagram.png" />
 
 ## Infrastructure
@@ -30,9 +32,9 @@ Add the required app settings (environment variables):
 
 ```sh
 az webapp config appsettings set -g rgapp -n appdotnetwebapi789 --settings \
-        AzureAd__Domain=<DOMAIN> \
-		AzureAd__ClientId=<CLIENT_ID> \
-		AzureAd__TenantId=<TENANT_ID> \
+        AzureAd__Domain="<DOMAIN>" \
+		AzureAd__ClientId="<CLIENT_ID>" \
+		AzureAd__TenantId="<TENANT_ID>" \
         WEBSITE_RUN_FROM_PACKAGE=1
 ```
 
