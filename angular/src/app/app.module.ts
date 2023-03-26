@@ -20,6 +20,8 @@ import { environment } from '../environments/environment';
 
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
+const scope: string = "user_impersonation"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,15 +50,13 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     }), {
       interactionType: InteractionType.Redirect,
       authRequest: {
-        // scopes: ['user.read', 'api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']
-        scopes: ['user.read', `api://${environment.applicationId}/user_impersonation`]
+        scopes: ['user.read', `api://${environment.applicationId}/${scope}`]
       }
     }, {
       interactionType: InteractionType.Redirect,
       protectedResourceMap: new Map([
         ['https://graph.microsoft.com/v1.0/me', ['user.read']],
-        // ['http://localhost:5053/api/*', ['api://8b8d0a49-6d53-41bf-865f-ad9dcb69da8e/read']]
-        [`${environment.appServiceEndpoint}/api/*`, [`api://${environment.applicationId}/user_impersonation`]]
+        [`${environment.appServiceEndpoint}/api/*`, [`api://${environment.applicationId}/${scope}`]]
       ])
     })
   ],
