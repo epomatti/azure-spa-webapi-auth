@@ -16,6 +16,10 @@ public class DogsController : ControllerBase
   [HttpGet(Name = "GetDogs")]
   public DogsResponse Get()
   {
+
+    var authProvider = Environment.GetEnvironmentVariable("WEBSITE_AUTH_DEFAULT_PROVIDER ");
+    _logger.LogInformation(message: $"Value for 'WEBSITE_AUTH_DEFAULT_PROVIDER': {authProvider}");
+
     return new DogsResponse
     {
       Dog = "Woof!"

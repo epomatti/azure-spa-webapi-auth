@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const API_ENDPOINT = "http://localhost:5053/api/protected"
+const API_ENDPOINT = "https://myappoauth.azurewebsites.net/api/protected"
 
 type ProtectedAPI = {
   protectedValue?: string

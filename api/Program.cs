@@ -8,6 +8,10 @@ DotEnv.Load();
 var builder = WebApplication.CreateBuilder(args);
 
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+
+// builder.Services.AddAuthentication(defaultScheme: AppServicesAuthenticationDefaults.AuthenticationScheme)
+//   .AddAppServicesAuthentication();
+
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
 
 builder.Services.AddCors(o => o.AddPolicy("default", builder =>
